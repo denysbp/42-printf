@@ -1,0 +1,37 @@
+NAME:= libftprintf.a
+
+CCFLAGS = cc -Wextra -Wall -Werror
+
+FILES = \
+	teste.c
+
+OBJ = $(FILES:.c=.o)
+
+libft_path = ./libft
+
+libft = $(libft_path)/libft.a
+
+all: $(NAME)
+
+
+%.o: %.c
+	$(CCFLAGS) -c $< -o $@
+
+$(libft):
+	make -C $(libft_path) all
+
+$(NAME): $(libft) $(OBJ)
+	cp $(libft) $(NAME)
+	ar rcs $(NAME) $(OBJ)
+
+clean:
+	make -C $(libft_path) clean
+	rm -rf $(OBJ)
+
+fclean: clean
+	make -C $(libft_path) fclean
+	rm -rf $(NAME)
+
+re:	fclean all
+
+.PHONY: all clean fclean re libft
