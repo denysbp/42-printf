@@ -3,3 +3,4 @@ main.c
 a.out
 *.o
 *.a
+./libft/tester/
