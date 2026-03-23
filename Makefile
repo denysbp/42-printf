@@ -3,7 +3,9 @@ NAME:= libftprintf.a
 CCFLAGS = cc -Wextra -Wall -Werror
 
 FILES = \
-	teste.c
+	ft_printf.c\
+	ft_print_char.c\
+	ft_print_number.c\
 
 OBJ = $(FILES:.c=.o)
 
