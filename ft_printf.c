@@ -15,21 +15,21 @@ int	ft_print_arg(char format, va_list args)
 
 	count = 0;
 	if (format == 'c')
-	{
 		count += ft_putchar(va_arg(args,int));
-	}
 	else if (format == '%')
-	{
 		count += ft_putchar(format);
-	}
 	else if (format == 's')
-	{
 		count += ft_putstr(va_arg(args,const char *));
-	}
 	else if (format == 'd' || format == 'i')
-	{
 		count += ft_putnbr(va_arg(args,int));
-	}
+	else if (format == 'u')
+		count += ft_put_unsigned_nbr(va_arg(args,unsigned int));
+	else if (format == 'x')
+		count += ft_puthex(va_arg(args,unsigned int),0);
+	else if (format == 'X')
+		count += ft_puthex(va_arg(args,unsigned int),1);
+	else if (format == 'p')
+		count += print_ptr(va_arg(args,void *));
 	return (count);
 }
 

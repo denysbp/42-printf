@@ -22,3 +22,16 @@ int	ft_putnbr(int nbr)
 	count += ft_putchar((nbr % 10) + '0');
 	return (count);
 }
+
+int	ft_put_unsigned_nbr(unsigned int nbr)
+{
+	int	count;
+
+	count = 0;
+	if(nbr >= 10)
+	{
+		count += ft_put_unsigned_nbr(nbr / 10);
+	}
+	count += ft_putchar((nbr % 10) + '0');
+	return (count);
+}
