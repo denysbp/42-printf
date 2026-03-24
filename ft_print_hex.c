@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-int	ft_puthex(unsigned long nbr,int uppercase)
+int	ft_puthex(unsigned long nbr, int uppercase)
 {
 	char	*base;
 	int		count;
@@ -16,7 +16,7 @@ int	ft_puthex(unsigned long nbr,int uppercase)
 	}
 	if (nbr >= 16)
 	{
-		count += ft_puthex((nbr / 16),uppercase);
+		count += ft_puthex((nbr / 16), uppercase);
 		count += ft_puthex((nbr % 16), uppercase);
 	}
 	else
@@ -40,6 +40,6 @@ int	print_ptr(void *ptr)
 	}
 	count += ft_putstr("0x");
 	nbr = (unsigned long)ptr;
-	count += ft_puthex(nbr,0);
+	count += ft_puthex(nbr, 0);
 	return (count);
 }

@@ -28,7 +28,7 @@ int	ft_put_unsigned_nbr(unsigned int nbr)
 	int	count;
 
 	count = 0;
-	if(nbr >= 10)
+	if (nbr >= 10)
 	{
 		count += ft_put_unsigned_nbr(nbr / 10);
 	}
