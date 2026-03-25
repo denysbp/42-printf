@@ -7,6 +7,7 @@ FILES = \
 	ft_print_char.c\
 	ft_print_number.c\
 	ft_print_hex.c\
+	ft_printf_utils.c\
 
 OBJ = $(FILES:.c=.o)
 
