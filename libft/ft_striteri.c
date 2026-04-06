@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_char.c                                    :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deferrei <deferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/07 00:19:48 by deferrei          #+#    #+#             */
-/*   Updated: 2026/04/07 00:19:49 by deferrei         ###   ########.fr       */
+/*   Created: 2026/04/06 23:15:38 by deferrei          #+#    #+#             */
+/*   Updated: 2026/04/06 23:15:39 by deferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putchar(char c)
-{
-	write(1, &c, 1);
-	return (1);
-}
-
-int	ft_putstr(const char *str)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
 	int	i;
 
-	if (!str)
-	{
-		return (0);
-	}
 	i = 0;
-	while (str[i])
+	if (!s)
 	{
-		ft_putchar(str[i]);
+		return ;
+	}
+	while (s[i])
+	{
+		f(i, &s[i]);
 		i++;
 	}
-	return (i);
 }

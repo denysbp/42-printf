@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libft.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: deferrei <deferrei@student.42lisboa.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/06 23:16:28 by deferrei          #+#    #+#             */
+/*   Updated: 2026/04/06 23:49:28 by deferrei         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef LIBFT_H
 # define LIBFT_H
 
@@ -5,6 +17,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <stddef.h>
+# include <stdint.h>
 
 /* verification */
 size_t		ft_strlen(const char *str);
@@ -31,7 +44,7 @@ char		*ft_strrchr(const char *str, int chr);
 void		*ft_memchr(const void *str, int chr, size_t size);
 int			ft_memcmp(const void *s1, const void *s2, size_t size);
 void		*ft_calloc(size_t nmemb, size_t size);
-char		*ft_strdup(char *src);
+char		*ft_strdup(const char *src);
 
 /*part II*/
 char		*ft_substr(char const *s, unsigned int start, size_t len);
@@ -49,9 +62,9 @@ void		ft_putnbr_fd(int n, int fd);
 /*part III*/
 typedef struct s_list
 {
-	void *content;
-	struct s_list *next;
-} t_list;
+	void			*content;
+	struct s_list	*next;
+}	t_list;
 
 t_list		*ft_lstnew(void *content);
 void		ft_lstadd_front(t_list **lst, t_list *new);
@@ -61,6 +74,6 @@ void		ft_lstadd_back(t_list **lst, t_list *new);
 void		ft_lstdelone(t_list *lst, void (*del)(void*));
 void		ft_lstclear(t_list **lst, void (*del)(void*));
 void		ft_lstiter(t_list *lst, void (*f)(void *));
-t_list		*ft_lstmap(t_list *lst, void *(*f)(void *),void (*del)(void *));
+t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 #endif

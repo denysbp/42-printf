@@ -1,36 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_char.c                                    :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deferrei <deferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/07 00:19:48 by deferrei          #+#    #+#             */
-/*   Updated: 2026/04/07 00:19:49 by deferrei         ###   ########.fr       */
+/*   Created: 2026/04/06 23:15:08 by deferrei          #+#    #+#             */
+/*   Updated: 2026/04/06 23:15:09 by deferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putchar(char c)
+void	ft_putchar_fd(char c, int fd)
 {
-	write(1, &c, 1);
-	return (1);
-}
-
-int	ft_putstr(const char *str)
-{
-	int	i;
-
-	if (!str)
-	{
-		return (0);
-	}
-	i = 0;
-	while (str[i])
-	{
-		ft_putchar(str[i]);
-		i++;
-	}
-	return (i);
+	write(fd, &c, 1);
 }

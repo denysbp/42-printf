@@ -1,36 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_char.c                                    :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deferrei <deferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/07 00:19:48 by deferrei          #+#    #+#             */
-/*   Updated: 2026/04/07 00:19:49 by deferrei         ###   ########.fr       */
+/*   Created: 2026/04/06 23:13:45 by deferrei          #+#    #+#             */
+/*   Updated: 2026/04/06 23:13:46 by deferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putchar(char c)
+int	ft_isalnum(int c)
 {
-	write(1, &c, 1);
-	return (1);
-}
-
-int	ft_putstr(const char *str)
-{
-	int	i;
-
-	if (!str)
+	if ((c >= '0' && c <= '9') || (c >= 'a' && c <= 'z')
+		|| (c >= 'A' && c <= 'Z'))
 	{
-		return (0);
+		return (1);
 	}
-	i = 0;
-	while (str[i])
-	{
-		ft_putchar(str[i]);
-		i++;
-	}
-	return (i);
+	return (0);
 }

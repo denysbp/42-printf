@@ -1,36 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_char.c                                    :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deferrei <deferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/07 00:19:48 by deferrei          #+#    #+#             */
-/*   Updated: 2026/04/07 00:19:49 by deferrei         ###   ########.fr       */
+/*   Created: 2026/04/06 23:15:31 by deferrei          #+#    #+#             */
+/*   Updated: 2026/04/06 23:15:32 by deferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putchar(char c)
-{
-	write(1, &c, 1);
-	return (1);
-}
+/*The strchr() function takes two arguments:
+	str and ch. It searches for the character
+	ch in the string pointed to by str*/
 
-int	ft_putstr(const char *str)
+char	*ft_strchr(const char *str, int ch)
 {
 	int	i;
 
-	if (!str)
-	{
-		return (0);
-	}
 	i = 0;
 	while (str[i])
 	{
-		ft_putchar(str[i]);
+		if (str[i] == (char)ch)
+		{
+			return ((char *)&str[i]);
+		}
 		i++;
 	}
-	return (i);
+	if (ch == '\0')
+	{
+		return ((char *)&str[i]);
+	}
+	return (NULL);
 }

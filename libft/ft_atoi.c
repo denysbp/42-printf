@@ -1,36 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_char.c                                    :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deferrei <deferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/07 00:19:48 by deferrei          #+#    #+#             */
-/*   Updated: 2026/04/07 00:19:49 by deferrei         ###   ########.fr       */
+/*   Created: 2026/04/06 23:13:30 by deferrei          #+#    #+#             */
+/*   Updated: 2026/04/06 23:13:31 by deferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putchar(char c)
-{
-	write(1, &c, 1);
-	return (1);
-}
-
-int	ft_putstr(const char *str)
+int	ft_atoi(const char *str)
 {
 	int	i;
+	int	resultado;
+	int	signal;
 
-	if (!str)
-	{
-		return (0);
-	}
 	i = 0;
-	while (str[i])
+	resultado = 0;
+	signal = 1;
+	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
 	{
-		ft_putchar(str[i]);
 		i++;
 	}
-	return (i);
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+		{
+			signal *= -1;
+		}
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		resultado = (resultado * 10) + (str[i] - '0');
+		i++;
+	}
+	return (resultado * signal);
 }

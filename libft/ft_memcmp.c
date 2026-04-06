@@ -1,36 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_char.c                                    :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deferrei <deferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/07 00:19:48 by deferrei          #+#    #+#             */
-/*   Updated: 2026/04/07 00:19:49 by deferrei         ###   ########.fr       */
+/*   Created: 2026/04/06 23:14:52 by deferrei          #+#    #+#             */
+/*   Updated: 2026/04/06 23:14:53 by deferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putchar(char c)
+int	ft_memcmp(const void *s1, const void *s2, size_t size)
 {
-	write(1, &c, 1);
-	return (1);
-}
+	size_t			i;
+	unsigned char	*p1;
+	unsigned char	*p2;
 
-int	ft_putstr(const char *str)
-{
-	int	i;
-
-	if (!str)
-	{
-		return (0);
-	}
+	p1 = (unsigned char *)s1;
+	p2 = (unsigned char *)s2;
 	i = 0;
-	while (str[i])
+	while (i < size)
 	{
-		ft_putchar(str[i]);
+		if (p1[i] != p2[i])
+		{
+			return (p1[i] - p2[i]);
+		}
 		i++;
 	}
-	return (i);
+	return (0);
 }

@@ -1,36 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_char.c                                    :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deferrei <deferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/07 00:19:48 by deferrei          #+#    #+#             */
-/*   Updated: 2026/04/07 00:19:49 by deferrei         ###   ########.fr       */
+/*   Created: 2026/04/06 23:16:11 by deferrei          #+#    #+#             */
+/*   Updated: 2026/04/06 23:16:12 by deferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putchar(char c)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	write(1, &c, 1);
-	return (1);
-}
+	unsigned int	start;
+	unsigned int	end;
 
-int	ft_putstr(const char *str)
-{
-	int	i;
-
-	if (!str)
+	start = 0;
+	if (!s1 || !set)
 	{
-		return (0);
+		return (NULL);
 	}
-	i = 0;
-	while (str[i])
+	end = ft_strlen(s1);
+	if (end > 0)
+		end--;
+	while (s1[start] && ft_strchr(set, s1[start]))
 	{
-		ft_putchar(str[i]);
-		i++;
+		start++;
 	}
-	return (i);
+	while (end > start && ft_strchr(set, s1[end]))
+	{
+		end--;
+	}
+	return (ft_substr(s1, start, end - start + 1));
 }

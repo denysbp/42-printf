@@ -1,36 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_char.c                                    :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deferrei <deferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/07 00:19:48 by deferrei          #+#    #+#             */
-/*   Updated: 2026/04/07 00:19:49 by deferrei         ###   ########.fr       */
+/*   Created: 2026/04/06 23:14:47 by deferrei          #+#    #+#             */
+/*   Updated: 2026/04/06 23:14:48 by deferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putchar(char c)
+int	ft_lstsize(t_list *lst)
 {
-	write(1, &c, 1);
-	return (1);
-}
+	int	count;
 
-int	ft_putstr(const char *str)
-{
-	int	i;
-
-	if (!str)
+	count = 0;
+	while (lst != NULL)
 	{
-		return (0);
+		count++;
+		lst = lst -> next;
 	}
-	i = 0;
-	while (str[i])
-	{
-		ft_putchar(str[i]);
-		i++;
-	}
-	return (i);
+	return (count);
 }

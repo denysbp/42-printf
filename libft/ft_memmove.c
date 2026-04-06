@@ -1,36 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_char.c                                    :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deferrei <deferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/07 00:19:48 by deferrei          #+#    #+#             */
-/*   Updated: 2026/04/07 00:19:49 by deferrei         ###   ########.fr       */
+/*   Created: 2026/04/06 23:15:02 by deferrei          #+#    #+#             */
+/*   Updated: 2026/04/06 23:15:03 by deferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putchar(char c)
+void	*ft_memmove(void *dest, const void *src, size_t Bytes)
 {
-	write(1, &c, 1);
-	return (1);
-}
+	const unsigned char	*ps;
+	unsigned char		*pd;
 
-int	ft_putstr(const char *str)
-{
-	int	i;
-
-	if (!str)
+	pd = (unsigned char *)dest;
+	ps = (const unsigned char *)src;
+	if (pd == ps || Bytes == 0)
+		return (dest);
+	if (pd < ps)
 	{
-		return (0);
+		while (Bytes--)
+		{
+			*pd++ = *ps++;
+		}
 	}
-	i = 0;
-	while (str[i])
+	else
 	{
-		ft_putchar(str[i]);
-		i++;
+		pd += Bytes;
+		ps += Bytes;
+		while (Bytes--)
+		{
+			*--pd = *--ps;
+		}
 	}
-	return (i);
+	return (dest);
 }

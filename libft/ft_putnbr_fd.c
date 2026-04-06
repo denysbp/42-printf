@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_char.c                                    :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deferrei <deferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/07 00:19:48 by deferrei          #+#    #+#             */
-/*   Updated: 2026/04/07 00:19:49 by deferrei         ###   ########.fr       */
+/*   Created: 2026/04/06 23:15:18 by deferrei          #+#    #+#             */
+/*   Updated: 2026/04/06 23:15:19 by deferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putchar(char c)
+void	ft_putnbr_fd(int n, int fd)
 {
-	write(1, &c, 1);
-	return (1);
-}
-
-int	ft_putstr(const char *str)
-{
-	int	i;
-
-	if (!str)
+	if (n == -2147483648)
 	{
-		return (0);
+		write(fd, "-2147483648", 11);
+		return ;
 	}
-	i = 0;
-	while (str[i])
+	if (n < 0)
 	{
-		ft_putchar(str[i]);
-		i++;
+		write(fd, "-", 1);
+		n = -n;
 	}
-	return (i);
+	if (n >= 10)
+	{
+		ft_putnbr_fd(n / 10, fd);
+	}
+	write(fd, &"0123456789"[n % 10], 1);
 }

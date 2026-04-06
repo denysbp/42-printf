@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_char.c                                    :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deferrei <deferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/07 00:19:48 by deferrei          #+#    #+#             */
-/*   Updated: 2026/04/07 00:19:49 by deferrei         ###   ########.fr       */
+/*   Created: 2026/04/06 23:13:40 by deferrei          #+#    #+#             */
+/*   Updated: 2026/04/06 23:13:41 by deferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putchar(char c)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	write(1, &c, 1);
-	return (1);
-}
+	size_t	total;
+	char	*pbr;
 
-int	ft_putstr(const char *str)
-{
-	int	i;
-
-	if (!str)
+	if (nmemb != 0 && size > SIZE_MAX / nmemb)
 	{
-		return (0);
+		return (NULL);
 	}
-	i = 0;
-	while (str[i])
+	total = nmemb * size;
+	pbr = malloc(total);
+	if (pbr == NULL)
 	{
-		ft_putchar(str[i]);
-		i++;
+		return (NULL);
 	}
-	return (i);
+	ft_memset(pbr, 0, total);
+	return (pbr);
 }

@@ -1,36 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_char.c                                    :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deferrei <deferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/07 00:19:48 by deferrei          #+#    #+#             */
-/*   Updated: 2026/04/07 00:19:49 by deferrei         ###   ########.fr       */
+/*   Created: 2026/04/06 23:15:05 by deferrei          #+#    #+#             */
+/*   Updated: 2026/04/06 23:15:06 by deferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putchar(char c)
+/*The memset() function takes three arguments:
+dest, ch and count. The character represented by ch
+is first converted to unsigned char and then copies
+it into the first count characters of the object pointed to by dest.*/
+
+void	ft_memset(void *dest, int ch, size_t count)
 {
-	write(1, &c, 1);
-	return (1);
-}
+	unsigned char	*ps;
+	int				i;
 
-int	ft_putstr(const char *str)
-{
-	int	i;
-
-	if (!str)
-	{
-		return (0);
-	}
+	ps = (unsigned char *)dest;
 	i = 0;
-	while (str[i])
+	if (count == 0)
 	{
-		ft_putchar(str[i]);
+		return ;
+	}
+	while (count != 0)
+	{
+		ps[i] = ch;
+		count--;
 		i++;
 	}
-	return (i);
 }

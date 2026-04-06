@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_char.c                                    :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deferrei <deferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/07 00:19:48 by deferrei          #+#    #+#             */
-/*   Updated: 2026/04/07 00:19:49 by deferrei         ###   ########.fr       */
+/*   Created: 2026/04/06 23:13:35 by deferrei          #+#    #+#             */
+/*   Updated: 2026/04/06 23:13:36 by deferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putchar(char c)
+void	ft_bzero(void *str, size_t n)
 {
-	write(1, &c, 1);
-	return (1);
-}
+	int				i;
+	unsigned char	*st;
 
-int	ft_putstr(const char *str)
-{
-	int	i;
-
-	if (!str)
-	{
-		return (0);
-	}
 	i = 0;
-	while (str[i])
+	st = (unsigned char *)str;
+	while (n != 0)
 	{
-		ft_putchar(str[i]);
+		st[i] = '\0';
+		n--;
 		i++;
 	}
-	return (i);
 }

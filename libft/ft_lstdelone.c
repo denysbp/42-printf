@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_char.c                                    :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deferrei <deferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/07 00:19:48 by deferrei          #+#    #+#             */
-/*   Updated: 2026/04/07 00:19:49 by deferrei         ###   ########.fr       */
+/*   Created: 2026/04/06 23:14:26 by deferrei          #+#    #+#             */
+/*   Updated: 2026/04/06 23:14:27 by deferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putchar(char c)
+/*
+	DESCRIPTION :
+	The function ft_lstdelone deletes the content of a list node with the
+	function passed as parameter before freeing the memory of the node.
+
+	RETURN VALUE :
+	None.
+*/
+
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	write(1, &c, 1);
-	return (1);
-}
-
-int	ft_putstr(const char *str)
-{
-	int	i;
-
-	if (!str)
+	if (!lst || !del)
 	{
-		return (0);
+		return ;
 	}
-	i = 0;
-	while (str[i])
-	{
-		ft_putchar(str[i]);
-		i++;
-	}
-	return (i);
+	del(lst -> content);
+	free(lst);
 }

@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_char.c                                    :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deferrei <deferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/07 00:19:48 by deferrei          #+#    #+#             */
-/*   Updated: 2026/04/07 00:19:49 by deferrei         ###   ########.fr       */
+/*   Created: 2026/04/06 23:16:01 by deferrei          #+#    #+#             */
+/*   Updated: 2026/04/06 23:16:02 by deferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putchar(char c)
+int	ft_strncmp(const char *str, const char *st, size_t count)
 {
-	write(1, &c, 1);
-	return (1);
-}
+	size_t	i;
 
-int	ft_putstr(const char *str)
-{
-	int	i;
-
-	if (!str)
+	i = 0;
+	if (count == 0)
 	{
 		return (0);
 	}
-	i = 0;
-	while (str[i])
+	while (i < count && str[i] == st[i] && str[i] && st[i])
 	{
-		ft_putchar(str[i]);
 		i++;
 	}
-	return (i);
+	if (i == count)
+		return (0);
+	return ((unsigned char)str[i] - (unsigned char)st[i]);
 }

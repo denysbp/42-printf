@@ -1,36 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_char.c                                    :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deferrei <deferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/07 00:19:48 by deferrei          #+#    #+#             */
-/*   Updated: 2026/04/07 00:19:49 by deferrei         ###   ########.fr       */
+/*   Created: 2026/04/06 23:15:50 by deferrei          #+#    #+#             */
+/*   Updated: 2026/04/06 23:15:51 by deferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putchar(char c)
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
-	write(1, &c, 1);
-	return (1);
-}
+	size_t	i;
+	size_t	src_len;
 
-int	ft_putstr(const char *str)
-{
-	int	i;
-
-	if (!str)
-	{
-		return (0);
-	}
 	i = 0;
-	while (str[i])
+	src_len = ft_strlen(src);
+	if (size == 0)
 	{
-		ft_putchar(str[i]);
+		return (src_len);
+	}
+	while (i < (size - 1) && src[i] != '\0')
+	{
+		dest[i] = src[i];
 		i++;
 	}
-	return (i);
+	dest[i] = '\0';
+	return (src_len);
 }

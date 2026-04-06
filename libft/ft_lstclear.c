@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_char.c                                    :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deferrei <deferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/07 00:19:48 by deferrei          #+#    #+#             */
-/*   Updated: 2026/04/07 00:19:49 by deferrei         ###   ########.fr       */
+/*   Created: 2026/04/06 23:14:17 by deferrei          #+#    #+#             */
+/*   Updated: 2026/04/06 23:26:24 by deferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putchar(char c)
+/* Deletes and frees the given node and all its
+successors, using the function ’del’ and free(3).
+Finally, set the pointer to the list to NULL.
+*/
+
+void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	write(1, &c, 1);
-	return (1);
-}
+	t_list	*next_one;
 
-int	ft_putstr(const char *str)
-{
-	int	i;
-
-	if (!str)
+	if (!lst || !del)
 	{
-		return (0);
+		return ;
 	}
-	i = 0;
-	while (str[i])
+	while (*lst)
 	{
-		ft_putchar(str[i]);
-		i++;
+		next_one = (*lst)-> next;
+		ft_lstdelone(*lst, del);
+		*lst = next_one;
 	}
-	return (i);
+	*lst = NULL;
 }

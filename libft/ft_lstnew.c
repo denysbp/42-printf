@@ -1,36 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_char.c                                    :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deferrei <deferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/07 00:19:48 by deferrei          #+#    #+#             */
-/*   Updated: 2026/04/07 00:19:49 by deferrei         ###   ########.fr       */
+/*   Created: 2026/04/06 23:14:41 by deferrei          #+#    #+#             */
+/*   Updated: 2026/04/06 23:14:42 by deferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putchar(char c)
+t_list	*ft_lstnew(void *content)
 {
-	write(1, &c, 1);
-	return (1);
-}
+	t_list	*new_list;
 
-int	ft_putstr(const char *str)
-{
-	int	i;
-
-	if (!str)
+	new_list = malloc(sizeof(t_list));
+	if (!new_list)
 	{
-		return (0);
+		return (NULL);
 	}
-	i = 0;
-	while (str[i])
-	{
-		ft_putchar(str[i]);
-		i++;
-	}
-	return (i);
+	new_list -> content = content;
+	new_list -> next = NULL;
+	return (new_list);
 }

@@ -1,36 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_char.c                                    :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deferrei <deferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/07 00:19:48 by deferrei          #+#    #+#             */
-/*   Updated: 2026/04/07 00:19:49 by deferrei         ###   ########.fr       */
+/*   Created: 2026/04/06 23:16:04 by deferrei          #+#    #+#             */
+/*   Updated: 2026/04/06 23:16:05 by deferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putchar(char c)
+char	*ft_strnstr(const char *str, const char *src, size_t size)
 {
-	write(1, &c, 1);
-	return (1);
-}
+	size_t	i;
+	size_t	j;
 
-int	ft_putstr(const char *str)
-{
-	int	i;
-
-	if (!str)
-	{
-		return (0);
-	}
 	i = 0;
-	while (str[i])
+	if (*src == '\0')
 	{
-		ft_putchar(str[i]);
+		return ((char *)str);
+	}
+	while (str[i] && i < size)
+	{
+		j = 0;
+		while ((i + j) < size && str[i + j] == src[j])
+		{
+			if (src[j + 1] == '\0')
+			{
+				return ((char *)(str + i));
+			}
+			j++;
+		}
 		i++;
 	}
-	return (i);
+	return (NULL);
 }

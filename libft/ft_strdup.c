@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_char.c                                    :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deferrei <deferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/07 00:19:48 by deferrei          #+#    #+#             */
-/*   Updated: 2026/04/07 00:19:49 by deferrei         ###   ########.fr       */
+/*   Created: 2026/04/06 23:15:34 by deferrei          #+#    #+#             */
+/*   Updated: 2026/04/06 23:15:36 by deferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putchar(char c)
+char	*ft_strdup(const char *src)
 {
-	write(1, &c, 1);
-	return (1);
-}
+	char	*dup;
 
-int	ft_putstr(const char *str)
-{
-	int	i;
-
-	if (!str)
+	if (! src)
 	{
-		return (0);
+		return (NULL);
 	}
-	i = 0;
-	while (str[i])
+	dup = (char *)malloc(ft_strlen(src) + 1);
+	if (! dup)
 	{
-		ft_putchar(str[i]);
-		i++;
+		return (NULL);
 	}
-	return (i);
+	ft_strlcpy(dup, src, ft_strlen(src) + 1);
+	return (dup);
 }

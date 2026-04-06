@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_char.c                                    :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deferrei <deferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/07 00:19:48 by deferrei          #+#    #+#             */
-/*   Updated: 2026/04/07 00:19:49 by deferrei         ###   ########.fr       */
+/*   Created: 2026/04/06 23:14:50 by deferrei          #+#    #+#             */
+/*   Updated: 2026/04/06 23:14:51 by deferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putchar(char c)
+void	*ft_memchr(const void *str, int chr, size_t size)
 {
-	write(1, &c, 1);
-	return (1);
-}
+	unsigned char	*carater;
+	unsigned char	ch;
 
-int	ft_putstr(const char *str)
-{
-	int	i;
-
-	if (!str)
+	ch = chr;
+	carater = (unsigned char *)str;
+	while (size != 0)
 	{
-		return (0);
+		if (*carater == ch)
+		{
+			return ((char *)carater);
+		}
+		carater++;
+		size--;
 	}
-	i = 0;
-	while (str[i])
-	{
-		ft_putchar(str[i]);
-		i++;
-	}
-	return (i);
+	return (NULL);
 }

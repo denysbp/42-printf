@@ -1,36 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_char.c                                    :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deferrei <deferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/07 00:19:48 by deferrei          #+#    #+#             */
-/*   Updated: 2026/04/07 00:19:49 by deferrei         ###   ########.fr       */
+/*   Created: 2026/04/06 23:15:58 by deferrei          #+#    #+#             */
+/*   Updated: 2026/04/06 23:15:59 by deferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putchar(char c)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	write(1, &c, 1);
-	return (1);
-}
+	char	*copia;
+	int		i;
 
-int	ft_putstr(const char *str)
-{
-	int	i;
-
-	if (!str)
+	if (!s)
 	{
-		return (0);
+		return (NULL);
+	}
+	copia = malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (!copia)
+	{
+		return (NULL);
 	}
 	i = 0;
-	while (str[i])
+	while (s[i])
 	{
-		ft_putchar(str[i]);
+		copia[i] = f(i, s[i]);
 		i++;
 	}
-	return (i);
+	copia[i] = '\0';
+	return (copia);
 }
