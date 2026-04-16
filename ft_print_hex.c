@@ -6,7 +6,7 @@
 /*   By: deferrei <deferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 00:19:52 by deferrei          #+#    #+#             */
-/*   Updated: 2026/04/07 00:19:53 by deferrei         ###   ########.fr       */
+/*   Updated: 2026/04/16 15:07:43 by deferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	print_ptr(void *ptr)
 	count = 0;
 	if (ptr == NULL)
 	{
-		count += ft_putstr("0x0");
+		count += ft_putstr("(nil)");
 		return (count);
 	}
 	count += ft_putstr("0x");

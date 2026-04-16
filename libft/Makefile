@@ -49,11 +49,10 @@ INCLUDES := includes/
 OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
-$(NAME): all
 .c.o:
 	cc $(CCFLAGS) -c -I$(INCLUDES) $< -o $(<:.c=.o)
 
-libft.a: $(OBJ)
+$(NAME): $(OBJ)
 	ar rcs $(NAME) $(OBJ)
 
 clean:

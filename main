@@ -1,0 +1,8 @@
+#include "ft_printf.h"
+int main()
+{
+	int	verdadeiro = printf("%s",NULL);
+	int	flaso = ft_printf("%s",NULL);
+
+	printf("verdadeiro: %d\n falso: %d\n", verdadeiro,flaso);
+}

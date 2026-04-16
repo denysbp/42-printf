@@ -6,7 +6,7 @@
 /*   By: deferrei <deferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 00:19:58 by deferrei          #+#    #+#             */
-/*   Updated: 2026/04/07 00:19:59 by deferrei         ###   ########.fr       */
+/*   Updated: 2026/04/16 14:54:53 by deferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int	ft_printf(const char *str, ...)
 
 	i = 0;
 	count = 0;
+	if (!str)
+		return (-1);
 	va_start(args, str);
 	while (str[i])
 	{

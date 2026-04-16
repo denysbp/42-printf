@@ -24,13 +24,13 @@ all: $(NAME)
 $(libft):
 	make -C $(libft_path) all
 
-$(NAME): $(libft) $(OBJ)
-	cp $(libft) $(NAME)
-	ar rcs $(NAME) $(OBJ)
+$(NAME): $(OBJ)
+	make -C $(libft_path)
+	ar rcs $(NAME) $(OBJ) $(libft_path)/*.o
 
 clean:
 	make -C $(libft_path) clean
-	rm -rf $(OBJ) libft.a
+	rm -rf $(OBJ)
 
 fclean: clean
 	make -C $(libft_path) fclean
